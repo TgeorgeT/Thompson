@@ -10,8 +10,10 @@ std::ofstream out("transitions.txt");
 int main()
 {
     std::string regex;
-    in >> regex;
-    regex = convert_to_prefix_form(regex);
+    bool is_postfix;
+    in >> regex >> is_postfix;
+    if (!is_postfix)
+        regex = convert_to_prefix_form(regex);
 
     std::cout << regex << std::endl;
     lambda_nfa *nfa = convert_postf_to_lambda_nfa(regex);
