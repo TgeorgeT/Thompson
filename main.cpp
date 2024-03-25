@@ -4,16 +4,18 @@
 #include "lambda_nfa.h"
 #include "fstream"
 
+std::ifstream in("input.txt");
 std::ofstream out("transitions.txt");
 
 int main()
 {
-    std::string regex = "(a|b)*.a.a.s*";
+    std::string regex;
+    in >> regex;
     regex = convert_to_prefix_form(regex);
+
     std::cout << regex << std::endl;
     lambda_nfa *nfa = convert_postf_to_lambda_nfa(regex);
     nfa->assign_index();
-    std::cout << nfa->size << "\n";
     std::vector<std::vector<std::pair<char, int>>>
         transitions = nfa->get_transitions();
 
