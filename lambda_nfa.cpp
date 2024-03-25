@@ -102,6 +102,11 @@ std::vector<std::vector<std::pair<char, int>>> lambda_nfa::get_transitions()
         node *current = queue.front();
         queue.pop_front();
 
+        if (seen[current->index])
+        {
+            continue;
+        }
+
         seen[current->index] = true;
         for (auto p : current->next)
         {
