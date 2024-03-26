@@ -1,5 +1,6 @@
 #ifndef CONVERT_H
 #define CONVERT_H
+#include <string>
 
 #include "lambda_nfa.h"
 

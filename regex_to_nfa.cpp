@@ -1,6 +1,6 @@
 #include "lambda_nfa.h"
 #include "convert.h"
-#include <string>
+#include <string.h>
 #include <deque>
 #include "utils.h"
 #include <iostream>

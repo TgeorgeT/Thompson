@@ -1,5 +1,6 @@
 #include "lambda_nfa.h"
 #include <deque>
+#include <string.h>
 
 lambda_nfa::lambda_nfa(char c)
 {
