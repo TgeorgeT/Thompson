@@ -1,4 +1,4 @@
-#!/Users/georgeteodorescu/Facultate/Lexer/venv/bin/python3.12
+#!/home/linux/Documents/GitHub/Thompson/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

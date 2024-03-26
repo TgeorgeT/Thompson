@@ -21,9 +21,17 @@ int main()
     std::vector<std::vector<std::pair<char, int>>>
         transitions = nfa->get_transitions();
 
+    int *colors = new int[nfa->size];
+    colors[0] = 1;
+    for (auto finalNode: nfa->final_states){
+        colors[finalNode->index] = 2;
+    }
+
     for (int i = 0; i < transitions.size(); i++)
     {
-        out << i << ": ";
+        std::string color;
+
+        out << i << ' ' << colors[i] << ": ";
         for (int j = 0; j < transitions[i].size(); j++)
         {
             out << "(" << transitions[i][j].first << "," << transitions[i][j].second << ") ";
