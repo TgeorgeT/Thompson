@@ -1,4 +1,5 @@
 #include "lambda_nfa.h"
+#include <iostream>
 #include <deque>
 #include <string.h>
 
@@ -9,6 +10,48 @@ lambda_nfa::lambda_nfa(char c)
 
     start->next.push_back(std::make_pair(c, final));
     final_states = {final};
+}
+
+void lambda_nfa::freeCurrentMemory()
+{
+    std::deque<node *> queue;
+    queue.push_back(start);
+
+    bool *seen = new bool[size + 1];
+    node** allNodes = new node*[size + 1];
+    memset(seen, 0, size);
+
+    std::cout << size << "\n";
+
+    while (!queue.empty())
+    {
+        node *current = queue.front();
+        queue.pop_front();
+
+        if (seen[current->index] == true)
+        {
+            continue;
+        }
+
+        seen[current->index] = true;
+        allNodes[current->index] = current;
+        for (auto p : current->next)
+        {
+            if (seen[p.second->index] == false)
+            {
+                queue.push_back(p.second);
+            }
+        }
+    }
+
+    for (int i = 0; i < size; i++){
+        if (seen[i] == false){
+            continue;
+        }
+        delete (allNodes[i]);
+    }
+    delete allNodes;
+    delete seen;
 }
 
 void lambda_nfa::reunion(lambda_nfa *other)
@@ -118,6 +161,8 @@ std::vector<std::vector<std::pair<char, int>>> lambda_nfa::get_transitions()
             }
         }
     }
+
+    delete seen;
 
     return transitions;
 }

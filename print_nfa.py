@@ -10,7 +10,6 @@ color_map = []
 for line in lines:
     g.add_node(line[0])
     state_type = line[1].split(":")[0]
-    print(state_type)
     color_map.append("green" if state_type == "1" else ("blue" if state_type == "0" else "red"))
 
 for line in lines:

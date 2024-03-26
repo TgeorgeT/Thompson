@@ -38,5 +38,9 @@ int main()
         }
         out << std::endl;
     }
+
+    nfa->freeCurrentMemory();
+    delete nfa;
+
     system("./venv/bin/python print_nfa.py");
 }

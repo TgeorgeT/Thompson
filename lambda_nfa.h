@@ -29,6 +29,8 @@ public:
 
     lambda_nfa(char c);
 
+    void freeCurrentMemory();
+
     void reunion(lambda_nfa *other);
 
     void concatenation(lambda_nfa *other);
